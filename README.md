@@ -11,4 +11,4 @@ For examples, visit https://github.com/katacoda/scenario-example
 
 docker network create internal
 
-docker network create default
+docker network create external
