@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+
+ fancywebserver:
+      build:
+        context: src/fancywebserver
+        dockerfile: ../../Dockerfiles/Dockerfile.fancywebserver
+        args:
+          buildno: 1
+      image: fancywebserver:1.0
+      container_name: fancywebserver
+      restart: always
+      volumes:
+      - ${HOME}/tmp/fancywebserver/api:/usr/src/fancywebserver
+      ports:
+      - 8081:8081
+      networks:
+       internal:
+         aliases:
+          - fancywebserver
+       default:
+         aliases:
+          - fancywebserver
+networks:
+  default:
+    external:
+       name: external
+  internal:
+    external:
+      name: internal
+
